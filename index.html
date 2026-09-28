@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rai560 · 作品导航</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07080c;--card:#12141c;--line:#242a38;--txt:#eef0f6;--muted:#9198ab;--muted2:#616983;
+ --cond:"Oswald","Noto Sans SC",sans-serif;--body:"Noto Sans SC",-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;
+ background-image:radial-gradient(circle at 50% 50%,rgba(255,255,255,.028) 1px,transparent 1.4px),
+   radial-gradient(1000px 600px at 15% -8%,rgba(120,80,255,.16),transparent 60%),
+   radial-gradient(1000px 600px at 85% -8%,rgba(0,180,220,.14),transparent 60%),
+   linear-gradient(180deg,#0a0b11,#07080c);
+ background-size:22px 22px,100% 100%,100% 100%,100% 100%;background-attachment:fixed}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+header{padding:72px 0 30px;text-align:center;position:relative}
+.eyebrow{font-family:var(--cond);letter-spacing:6px;font-size:13px;color:var(--muted2);text-transform:uppercase}
+h1{font-family:var(--cond);font-size:clamp(34px,6vw,60px);font-weight:700;letter-spacing:1px;margin:10px 0 6px;
+ background:linear-gradient(100deg,#b79bff,#5ee0ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+header .sub{color:var(--muted);font-size:15px;max-width:560px;margin:0 auto}
+.sec-label{font-family:var(--cond);font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--muted2);
+ margin:36px 0 14px;display:flex;align-items:center;gap:12px}
+.sec-label::after{content:"";flex:1;height:1px;background:var(--line)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;padding-bottom:10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 22px 20px;display:flex;gap:16px;
+ position:relative;overflow:hidden;transition:.2s;align-items:flex-start}
+.card::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--ac,#5ee0ff)}
+.card::after{content:"";position:absolute;top:-40%;right:-20%;width:160px;height:160px;border-radius:50%;
+ background:radial-gradient(circle,var(--ac,#5ee0ff),transparent 70%);opacity:.1;pointer-events:none}
+.card:hover{transform:translateY(-4px);border-color:var(--ac,#3a445c);box-shadow:0 18px 44px -14px rgba(0,0,0,.7),0 0 30px -14px var(--ac)}
+.ico{flex:0 0 auto;width:54px;height:54px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:28px;
+ background:linear-gradient(150deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid var(--line)}
+.meta{flex:1;min-width:0}
+.meta .t{font-size:17px;font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tag{font-family:var(--cond);font-size:10.5px;font-weight:600;letter-spacing:.5px;padding:2px 8px;border-radius:5px;
+ background:var(--ac,#3a445c);color:#0a0b11}
+.meta .d{color:var(--muted);font-size:13px;margin-top:5px}
+.meta .u{color:var(--muted2);font-size:11.5px;margin-top:9px;font-family:var(--cond);letter-spacing:.3px;word-break:break-all}
+.arrow{position:absolute;bottom:16px;right:18px;color:var(--muted2);font-size:18px;transition:.2s}
+.card:hover .arrow{color:var(--ac);transform:translateX(3px)}
+footer{text-align:center;color:var(--muted2);font-size:12px;padding:40px 0 50px}
+@media(max-width:600px){header{padding:48px 0 20px}.grid{grid-template-columns:1fr}.wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+ <div class="eyebrow">Rai560 · Works</div>
+ <h1>作品导航</h1>
+ <div class="sub">自己做的一些自包含网页小工具与合集，都部署在 GitHub Pages 上，点卡片即可进入。</div>
+</header>
+
+<div class="sec-label">主项目 · Projects</div>
+<div class="grid" id="main"></div>
+
+<div class="sec-label">学习 & 记录 · Study &amp; Log</div>
+<div class="grid" id="study"></div>
+
+<footer>Rai560 · 全部页面托管于 GitHub Pages · 卡片内容与数据仅供个人整理使用</footer>
+</div>
+
+<script>
+const PROJECTS = {
+ main:[
+  {ico:"🦸",name:"超级英雄观影地图",tag:"MARVEL × DC",ac:"#e23636",
+   d:"漫威 + DC 共 90 部电影/剧集全整理，含观看顺序、官方海报、评分、篇章展厅。",
+   u:"rai560.github.io/superhero/"},
+  {ico:"📚",name:"藏道于喻 · 寓言合集",tag:"FABLES",ac:"#b79bff",
+   d:"用隐喻寓言讲抽象概念的合集，每周自动更新一篇。",
+   u:"rai560.github.io/fables/"},
+  {ico:"⚽",name:"世界杯 2026 看板",tag:"WORLD CUP",ac:"#22c55e",
+   d:"2026 世界杯赛程 / 球队 / 数据看板。",
+   u:"rai560.github.io/worldcup2026/"},
+ ],
+ study:[
+  {ico:"🏋️",name:"知行健身证",tag:"COACH CERT",ac:"#f5a623",
+   d:"新国职初级教练证备考学习页，分章知识点整理。",
+   u:"rai560.github.io/fables/zhixing/"},
+  {ico:"💪",name:"铁血调 · 训练记录器",tag:"STRENGTH LOG",ac:"#ef4444",
+   d:"力量训练动作 / 组次 / 重量记录工具。",
+   u:"rai560.github.io/fables/zhixing/train.html"},
+  {ico:"📖",name:"AWS AIF 备考",tag:"AWS AIF",ac:"#5ee0ff",
+   d:"AWS AI Practitioner 认证备考知识页。",
+   u:"rai560.github.io/fables/aws-aif/"},
+ ]
+};
+function build(id){
+ document.getElementById(id).innerHTML=PROJECTS[id].map(p=>`
+  <a class="card" style="--ac:${p.ac}" href="https://${p.u}" target="_blank" rel="noopener">
+   <div class="ico">${p.ico}</div>
+   <div class="meta">
+    <div class="t">${p.name}<span class="tag">${p.tag}</span></div>
+    <div class="d">${p.d}</div>
+    <div class="u">${p.u}</div>
+   </div>
+   <div class="arrow">→</div>
+  </a>`).join("");
+}
+build("main");build("study");
+</script>
+</body>
+</html>
